@@ -1,9 +1,5 @@
 import { state, domElement } from './state.js'
 
-
-
-let p = document.createElement('p');
-p.insertAdjacentHTML('beforeend', ``)
 const progectGame1 = {
     users: [
         { name: "", img: "", result: 0 },
@@ -23,11 +19,12 @@ const progectGame1 = {
             }
         })
         let img = Array.from(document.getElementsByClassName('img_new'))
+        console.log(img)
         img.forEach((item, index) => {
             item.addEventListener('click', () => {
-                index < 3 ?
+                index < img.length/2 ?
                     this.users[0].img = state.img[index] :
-                    this.users[1].img = state.img[index - 3];
+                    this.users[1].img = state.img[index - img.length/2];
             })
         })
         m.close.addEventListener('click', () => modalClose(m.modal, 'none'));
@@ -55,6 +52,7 @@ const progectGame1 = {
         
     },
     userInfo() {
+       
         domElement.gamers.innerHTML = '';
         this.users.forEach(item =>
             domElement.gamers.insertAdjacentHTML('beforeend', `
